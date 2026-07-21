@@ -26,3 +26,25 @@ class MembroResponse(MembroBase):
 
     class Config:
         from_attributes = True
+
+# Adicione no final do schemas.py
+class VisitanteBase(BaseModel):
+    nome: str
+    idade: Optional[int] = None
+    sexo: Optional[str] = None
+    profissao: Optional[str] = None
+    data_nasc: Optional[date] = None
+    telefone: Optional[str] = None
+    endereco: Optional[str] = None
+    data_visita: Optional[date] = None
+
+class VisitanteCreate(VisitanteBase):
+    create_by: int
+
+class VisitanteResponse(VisitanteBase):
+    id: int
+    created_date: Optional[datetime] = None
+    update_date: Optional[datetime] = None
+
+    class Config:
+        from_attributes = True
